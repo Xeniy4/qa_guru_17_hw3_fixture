@@ -20,4 +20,9 @@ def prepare_browser():
 def test_browser(prepare_browser):
     browser.element('[name="q"]').should(be.blank).type('yashaka/selene').press_enter()
     browser.element('[id="search"]').should(have.text('yashaka/selene: User-oriented Web UI browser tests'))
+    browser.element('[name="q"]').clear()
 
+
+def test_something(prepare_browser):
+    browser.element('[name="q"]').should(be.blank).type('111abc22s34').press_enter()
+    browser.element('[class="card-section"]').should(have.text('По запросу 111abc22s34 ничего не найдено.'))
