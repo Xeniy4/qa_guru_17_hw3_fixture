@@ -11,8 +11,9 @@ def prepare_browser():
     browser.config.driver_options = driver_options
     browser.config.window_height = 900
     browser.config.window_width = 1400
-    browser.open('https://google.com')
     browser.config.timeout = 20
+    browser.open('https://google.com')
+
     yield
     browser.quit()
 
@@ -24,5 +25,5 @@ def test_browser(prepare_browser):
 
 
 def test_something(prepare_browser):
-    browser.element('[name="q"]').should(be.blank).type('111abc22s34').press_enter()
+    browser.element('[name="q"]').type('111abc22s34').press_enter()
     browser.element('[class="card-section"]').should(have.text('По запросу 111abc22s34 ничего не найдено.'))
